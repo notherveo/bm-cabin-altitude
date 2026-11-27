@@ -63,7 +63,7 @@ function Globe() {
 export function RouteVisualizer() {
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
-  const [aircraft, setAircraft] = useState(aircraft[0]);
+  const [selected, setSelected] = useState(aircraft[0]);
   const [showResult, setShowResult] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
@@ -119,8 +119,8 @@ export function RouteVisualizer() {
                   <Button
                     key={a.name}
                     type="button"
-                    variant={aircraft.name === a.name ? "default" : "outline"}
-                    onClick={() => setAircraft(a)}
+                    variant={selected.name === a.name ? "default" : "outline"}
+                    onClick={() => setSelected(a)}
                   >
                     {a.name}
                   </Button>
@@ -155,7 +155,7 @@ export function RouteVisualizer() {
                 </div>
                 <div className="text-right">
                   <p className="text-sm text-muted-foreground">Range</p>
-                  <p className="text-lg font-medium">{aircraft.range}</p>
+                  <p className="text-lg font-medium">{selected.range}</p>
                 </div>
               </div>
 
@@ -163,10 +163,10 @@ export function RouteVisualizer() {
                 <p className="text-sm font-medium mb-2">Recommended Aircraft</p>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium">{aircraft.name}</p>
-                    <p className="text-sm text-muted-foreground">{aircraft.class}</p>
+                    <p className="font-medium">{selected.name}</p>
+                    <p className="text-sm text-muted-foreground">{selected.class}</p>
                   </div>
-                  <p className="text-sm font-medium">{aircraft.price}</p>
+                  <p className="text-sm font-medium">{selected.price}</p>
                 </div>
               </div>
 
